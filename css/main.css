@@ -1,0 +1,130 @@
+section.jogo, section.endgame{
+     display: none;
+}
+
+@font-face {
+     font-family: harry;
+     src: url('../font/harry.ttf');
+}
+
+@font-face {
+     font-family: material;
+     src: url('../font/MaterialIcons-Regular.ttf');
+}
+
+body{
+     background: url(../img/pomo2.png), url(../img/fd_new.png);
+     background-size: 10% auto, auto;
+}
+
+.material-icon{
+     font-family: material;
+}
+
+/* section inicio */
+
+section.inicio{
+     text-align: center;
+}
+
+section.inicio div{
+     text-align: right;
+     margin: 3vh 4vh 18vh 0;
+}
+section.inicio div button{
+     background: none;
+     border: none;
+     color: white;
+     font-size: 3em;
+}
+
+section.inicio h1{
+     font-family: harry;
+     font-size: 4em;
+     background: linear-gradient(#e9a800, #ffd241);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+}
+
+section.inicio p{
+     margin: 2vh 0;
+}
+section.inicio p img{
+     height: 10vh;
+     position: relative;
+}
+
+section.inicio p button{
+     font-family: harry;
+     background: linear-gradient(to top, #e9a800, #ffd241);
+     border: none;
+     color: white;
+     font-size: 2em;
+     padding: 2vh 2vw;
+}
+
+/* section jogo */
+
+section.jogo{
+     width: 90vw;
+     margin: 5vh auto 0 auto;
+}
+
+section.jogo header{
+     display: flex;
+     justify-content: space-between;
+     font-family: harry;
+     font-size: 2em;
+     color: #e9a800;
+}
+
+section.jogo div.campo{
+     width: 90vw;
+     height: 80vh;
+     margin: 5vh 0 0 0;
+     background: url(../img/fundo.jpg) center center;
+     background-size: 100% auto;
+}
+
+section.jogo div.pomo{
+     width: 50px;
+     height: 42px;
+     background: url(../img/pomo.gif);
+     background-size: 100%;
+     position: relative;
+     border: 1px solid transparent;
+}
+
+section.jogo div.pomo span{
+     display: block;
+     width: 30%;
+     height: 40%;
+     border-radius: 50%;
+     margin: 30% auto 0 auto;
+     /* background-color: black; */
+}
+
+/* section endgame */
+
+section.endgame{
+     text-align: center; 
+}
+
+section.endgame div.dados{
+     width: 50vw;
+     height: 50vh;
+     margin: 5vh auto;
+     padding: 50px;
+     text-align: center;
+     font-family: harry;
+     font-size: 5em;
+     color: #e9a800;
+}
+section.endgame p button.voltar{
+     font-family: harry;
+     background: linear-gradient(to top, #e9a800, #ffd241);
+     border: none;
+     color: white;
+     font-size: 3em;
+     padding: 2vh 2vw;
+}

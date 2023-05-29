@@ -1,0 +1,122 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>PEGUE O POMO</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="font/material-icons.css"> 
+</head>
+<body> 
+
+<!-- section inicio -->
+  <section class="inicio">
+    <div><button class="material-icon">volume_off</button></div>
+    <h1>PEGUE O POMO</h1>
+    <p><img class="harry" src="img/harry.png" alt=""></p>
+    <p><button class="btn-inicio">INICIAR</button></p>
+  </section>
+
+<!-- section jogo -->
+<section class="jogo">
+    <header>
+      <h2 class="pontos">PONTOS: <span>0</span></h2>
+      <h2 class="tempo"><span>0</span>s</h2>
+    </header>
+
+    <div class="campo">
+      <div class="pomo"><span></span></div>
+    </div>
+  </section>
+
+<!-- section endgame -->
+
+  <section class="endgame">
+    <div class="dados">
+      <p>PARABÉNS!</p>
+      <p>Você fez 10 pontos em <span></span> segundos!</p>
+    </div>
+    <p><button class="voltar">Voltar</button></p>
+  </section>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+
+    musicaTemaClassico = new Audio("musica/harry-potter-theme.mp3");
+
+        $("section.inicio div button").on("click", function(){
+          textoDoBotao =$(this).text();
+
+          if(textoDoBotao == "volume_off"){
+            musicaTemaClassico.play();
+            $(this).text("volume_up");
+          }else{
+            musicaTemaClassico.pause();
+            $(this).text("volume_off");
+          }
+    });
+
+    setInterval(function(){
+      $("section.inicio img.harry").animate({top:"-15px"},1500).animate({top:"0px"},1500);
+    }, 3000);
+
+    var tempoFinal;
+
+    $("section.inicio button.btn-inicio").on("click", function(){
+      $("section").hide();
+      $("section.jogo").show();
+
+      contagemDeTempo = setInterval(function(){
+        var conteudoTempo = parseInt($("h2.tempo span").text());
+        var soma = conteudoTempo + 1;
+        $("h2.tempo span").text(soma);
+        tempoFinal = soma;
+      }, 1000);
+
+      larguraDoCampo = $("div.campo").width();
+      alturaDoCampo = $("div.campo").height();
+      larguraDoPomo = $("div.pomo").width();
+      alturaDoPomo = $("div.pomo").height();
+
+      deslocamento = setInterval(function(){
+        distanciaDoTopo = Math.round(Math.random()*(alturaDoCampo-alturaDoPomo));
+        distanciaDaEsquerda = Math.round(Math.random()*(larguraDoCampo-larguraDoPomo));
+        $("section.jogo div.pomo").animate({top:distanciaDoTopo + "px", left: distanciaDaEsquerda + "px"},2000);
+      }, 2000);
+    });
+
+    $("section.jogo div.pomo span").on("click", function(){
+      var conteudoPontos = parseInt($("h2.pontos span").text());
+      var soma = conteudoPontos + 1;
+      $("h2.pontos span").text(soma);
+
+      if(soma == 10){
+        $("section").hide();
+        $("section.endgame").show();
+
+        $("section.endgame div.dados p span").text(tempoFinal);
+
+        musicaTemaClassico.pause();
+        musicaRemix = new Audio("musica/harry-potter-theme-remix-2.mp3");
+        musicaRemix.play();
+
+      }
+    });
+
+    $("section.endgame p button.voltar").on("click", function(){
+        location.reload();
+    });
+
+  </script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
